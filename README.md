@@ -11,4 +11,4 @@ Each feature will try to avoid too much unraid specifics but for now they will a
 
 ## Featurs
 
-- [Nomad](https://github.com/botto/homelab/nomad)
+- [Nomad](/nomad)
