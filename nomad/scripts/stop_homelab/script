@@ -1,0 +1,13 @@
+#!/bin/bash
+#description=Stop the homelab
+#arrayStarted=true
+#backgroundOnly=true
+NOMAD_ROOT=/mnt/user/homelab/nomad
+if [ ! -f $NOMAD_ROOT/pidfile ]; then
+  exit 1
+fi
+nomad_pid=`cat $NOMAD_ROOT/pidfile`
+pkill -P $nomad_pid
+kill $nomad_pid
+rm $NOMAD_ROOT/pidfile
+exit 0

@@ -1,0 +1,13 @@
+#!/bin/bash
+#description=Start the homelab
+#arrayStarted=true
+#backgroundOnly=true
+NOMAD_ROOT=/mnt/user/homelab/nomad
+if [ -f $NOMAD_ROOT/pidfile ]; then
+  exit 1
+fi
+log_file_name=`date +nomad_%Y%m%d%H%M%S.log`
+nohup /boot/custom_bin/nomad agent --config $NOMAD_ROOT/config/main.hcl &>$NOMAD_ROOT/logs/$log_file_name &
+nomad_pid=$!
+echo "$nomad_pid" > $NOMAD_ROOT/pidfile
+exit 0
