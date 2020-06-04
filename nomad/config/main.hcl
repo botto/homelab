@@ -1,4 +1,4 @@
-data_dir  = "/mnt/user/homelab/nomad/data"
+data_dir  = "/mnt/pool/appdata/nomad"
 
 bind_addr = "0.0.0.0" # the default
 
@@ -11,9 +11,9 @@ server {
 
 client {
   enabled = true
-  host_volume "root" {
-    path = "/mnt/user"
-    read_only = true
+  host_volume "influx_data" {
+    path = "/mnt/pool/appdata/influxdb"
+    read_only = false
   }
 }
 
@@ -29,3 +29,6 @@ plugin "docker" {
   }
 }
 
+consul {
+  address = "1.2.3.4:8500"
+}
